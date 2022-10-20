@@ -1,0 +1,11 @@
+{
+    "token": "",
+    "prefix": "",
+    "clientID": "",
+
+    "mode": "publico",
+    "rabbit_url": "a",
+
+    "strapi_url": "",
+    "strapi_token": ""
+}

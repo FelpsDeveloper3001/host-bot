@@ -4,3 +4,4 @@ build
 .vscode
 yarn.lock
 src/config/config.json
+yarn-error.log
