@@ -1,4 +1,6 @@
 import { Client, GatewayIntentBits, Collection } from "discord.js";
+import { services } from "./services";
+
 const { Guilds, MessageContent, GuildMessages, GuildMembers, DirectMessages } =
   GatewayIntentBits;
 const client = new Client({
@@ -23,5 +25,6 @@ const handlersDir = join(__dirname, "./handlers");
 readdirSync(handlersDir).forEach((handler) => {
   require(`${handlersDir}/${handler}`)(client);
 });
+services();
 
 client.login(token);

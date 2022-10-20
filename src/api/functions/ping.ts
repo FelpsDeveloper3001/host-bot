@@ -1,6 +1,6 @@
 import api from "../";
 
-export async function teste(): Promise<any> {
+export async function ping(): Promise<number> {
   return new Promise((res) => {
     api
       .get("/system")
