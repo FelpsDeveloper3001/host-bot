@@ -1,0 +1,50 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js
+
+PATH: 
+  C:\Python310\Scripts\;C:\Python310\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\dotnet\;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\Program Files\PuTTY\;C:\Program Files (x86)\Yarn\bin\;C:\Program Files\Git\cmd;C:\Users\Diel\AppData\Roaming\npm;C:\Users\Diel\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Diel\AppData\Local\Yarn\bin
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  16.17.1
+
+Platform: 
+  win32 x64
+
+Trace: 
+  SyntaxError: C:\Users\Diel\Desktop\host\bot\package.json: Unexpected token } in JSON at position 330
+      at JSON.parse (<anonymous>)
+      at C:\Program Files (x86)\Yarn\lib\cli.js:1629:59
+      at Generator.next (<anonymous>)
+      at step (C:\Program Files (x86)\Yarn\lib\cli.js:310:30)
+      at C:\Program Files (x86)\Yarn\lib\cli.js:321:13
+
+npm manifest: 
+  {
+    "name": "host-bot",
+    "version": "1.0.0",
+    "description": "",
+    "scripts": {
+      "start": "cls && node build/index.js"
+    },
+    "keywords": [],
+    "author": "MericcaN41",
+    "license": "ISC",
+    "dependencies": {
+      "@discordjs/rest": "^1.1.0",
+      "@types/node": "^18.7.14",
+      "chalk": "^4.1.2",
+      "discord.js": "14.3.0",
+    },
+    "devDependencies": {
+      "typescript": "^4.8.2"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
