@@ -25,6 +25,7 @@ const handlersDir = join(__dirname, "./handlers");
 readdirSync(handlersDir).forEach((handler) => {
   require(`${handlersDir}/${handler}`)(client);
 });
+
 services();
 
 client.login(token);

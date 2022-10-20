@@ -38,10 +38,11 @@ As seguintes ferramentas foram usadas por todo o ecossistema do bot:
 
 - [Node.js](https://nodejs.org/en/)
 - [TypeScript](https://www.typescriptlang.org/)
-- [Strapi.io](https://www.prisma.io/)
+- [Prisma.io](https://www.prisma.io/)
 - [RabbitMQ](https://www.rabbitmq.com/)
 - [Discord.js](https://discord.js.org)
 - [Postgree](https://www.postgresql.org)
+- [Strapi.io](https://strapi.io/)
 
 ### Pré-requisitos
 
@@ -69,6 +70,9 @@ $ npm install
 
 # faça o build do bot
 $ npm run build
+
+# enviar as ultimas atualizações do banco de dados
+$ npx prisma db push
 
 # Execute a aplicação em modo de produção
 $ npm run production
