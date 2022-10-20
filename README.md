@@ -12,9 +12,11 @@ Host Bot é um bot de discord feito em typescript que gerencia os containers doc
 - Reiniciar aplicação automaticamente apos queda
 - Sistema de multiplos nodes
 - Sistema de logs
-- Sistema de vencimento da aplicação ( apenas em modo publico )
+- Sistema de vencimento da aplicação
+- Sistema de planos indidual
 - Pode-se usar em modo individual ou publico
 - Totalmente configuravel
+- Bot em Português / Inglês
 
 ### Capturas de tela
 
@@ -47,7 +49,7 @@ Antes de começar, você vai precisar ter instalado em sua máquina as seguintes
 [Docker](https://www.docker.com), [Docker-Compose](https://docs.docker.com/compose/), [Node.js](https://nodejs.org/en/).
 Além disto é bom ter um editor em seu computador para editar o codigo se necessario [VSCode](https://code.visualstudio.com/)
 
-É obrigatorio possuir uma conexão com banco de dados ( [Postgre](https://www.postgresql.org/) ) e [RabbitMQ](https://www.rabbitmq.com/)
+É obrigatorio possuir uma conexão com banco de dados ( Postgre ou Mysql ), [Strapi](https://strapi.io/) e [RabbitMQ](https://www.rabbitmq.com/)
 
 Todas as configurações do bot está no diretorio src/config/config.json
 

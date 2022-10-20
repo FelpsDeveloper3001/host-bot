@@ -1,13 +1,14 @@
-import {
-  Client,
-  GatewayIntentBits,
-  Collection,
-  PermissionFlagsBits,
-} from "discord.js";
-const { Guilds, MessageContent, GuildMessages, GuildMembers } =
+import { Client, GatewayIntentBits, Collection } from "discord.js";
+const { Guilds, MessageContent, GuildMessages, GuildMembers, DirectMessages } =
   GatewayIntentBits;
 const client = new Client({
-  intents: [Guilds, MessageContent, GuildMessages, GuildMembers],
+  intents: [
+    Guilds,
+    MessageContent,
+    GuildMessages,
+    GuildMembers,
+    DirectMessages,
+  ],
 });
 import { Command, SlashCommand } from "./types";
 import { readdirSync } from "fs";
