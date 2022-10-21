@@ -1,9 +1,11 @@
 import { Interaction } from "discord.js"
 import { BotEvent } from "../types"
+import { prisma } from "../database/prisma"
+import UploadInteraction from "../interactions/modals/upload"
 
 const event: BotEvent = {
   name: "interactionCreate",
-  execute: (interaction: Interaction) => {
+  execute: async (interaction: Interaction) => {
     if (interaction.isCommand()) {
       let command = interaction.client.slashCommands.get(
         interaction.commandName
@@ -40,7 +42,16 @@ const event: BotEvent = {
       command.execute(interaction)
     }
     if (interaction.isModalSubmit()) {
-      console.log("form recebido")
+      const form = await prisma.interactions.findUnique({
+        where: {
+          customId: interaction.customId,
+        },
+      })
+      if (form) {
+        const type = JSON.parse(form.extra as string).type
+        if (type == "upload")
+          return new UploadInteraction().execute(interaction)
+      }
     }
   },
 }

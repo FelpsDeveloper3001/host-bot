@@ -1,0 +1,9 @@
+{
+    "upload": {
+        "invalidBot": "The bot id you entered is invalid",
+        "channelAlreadyCreated": "You already have an open channel",
+        "memoryFormatError": "Enter only numbers in memory",
+        "channelUploadCreate": "Your upload channel has been created",
+        "invalidImage": "Incorrect node version does not exist"
+    }
+}

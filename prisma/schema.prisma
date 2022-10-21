@@ -8,9 +8,14 @@ datasource db {
 }
 
 model Interactions {
-  id       String  @id @default(uuid())
-  customId String  @unique
-  modals   String?
-  buttons  String?
-  menus    String?
+  id        String  @id @default(uuid())
+  customId  String  @unique
+  channelId String?
+  createdBy String?
+  extra     String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("interactions")
 }
