@@ -28,14 +28,17 @@ export async function teste(): Promise<any> {
   })
 }
 
-export async function getBot(id: string): Promise<Bot> {
+export async function getBot(id: string): Promise<Bot | undefined> {
   const response = await api.get(`bots?filters[bot_id][$eq]=${id}`)
-  return response.data.data[0].attributes
+  if (response.data.data[0]) {
+    return response.data.data[0].attributes
+  }
+  return undefined
 }
 
 export async function createBot(data: botCreateProps): Promise<Bot> {
   try {
-    const bot = await getBot(data.bot_id)
+    const bot = (await getBot(data.bot_id)) as any
     bot.err = 1
     if (bot) return bot
     const response = await api.post(`${strapi_url}/bots`, {

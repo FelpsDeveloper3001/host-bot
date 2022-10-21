@@ -137,7 +137,7 @@ export default class UploadInteraction {
               },
             ])
 
-          channel?.send({
+          const msgId = await channel?.send({
             content: `${interaction.member}`,
             embeds: [embed],
           })
@@ -166,12 +166,15 @@ export default class UploadInteraction {
                   })
                   if (bot) {
                     rabbit.send("host:node", plan.node, {
+                      type: "upload",
                       mode,
                       proxy: zip.proxyURL,
                       size: zip.size,
                       memory,
                       image: nodeVersion,
                       main: file,
+                      messageId: msgId?.id,
+                      channelId: channel.id,
                     })
                   }
                 })
