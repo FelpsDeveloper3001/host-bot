@@ -52,6 +52,8 @@ Além disto é bom ter um editor em seu computador para editar o codigo se neces
 
 É obrigatorio possuir uma conexão com banco de dados ( Postgre ou Mysql ), [Strapi](https://strapi.io/) e [RabbitMQ](https://www.rabbitmq.com/)
 
+Você pode subir os container dos serviços obrigatorios no diretorio src/templates
+
 Todas as configurações do bot está no diretorio src/config/config.json
 
 ### 🎲 Rodando o bot em servidor linux
@@ -76,11 +78,9 @@ $ npx prisma db push
 
 # Execute a aplicação em modo de produção
 $ npm run production
-
-# O bot ficará disponivel para uso
 ```
 
-#### Rodando o bot docker-compose:
+#### Rodando o bot via docker-compose:
 
 ```bash
 # Clone este repositório
@@ -91,8 +91,6 @@ $ cd host-bot
 
 # Fazendo upload do bot para o docker
 $ docker-compose up -D
-
-# O bot ficará disponivel para uso
 ```
 
 ### Autor

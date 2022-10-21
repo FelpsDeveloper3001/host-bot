@@ -1,0 +1,25 @@
+{
+    "upload": {
+        "mode": {
+            "individual": {
+                "title": "Host Bot - Hospedar bot individual",
+                "inputs": {
+                    "1": "Informe o ID do cliente dessa aplicação",
+                    "2": "Informe o ID do bot desse cliente",
+                    "3": "Selecione o plano para essa aplicação",
+                    "4": "Informe o vencimento da aplicação",
+                    "5": "Informe o node dessa aplicação"
+                }
+            },
+            "public": {
+                "title": "Host Bot - Upload de bot",
+                "inputs": {
+                    "1": "Informe o ID do seu bot",
+                    "2": "Informe a memoria disponivel em seu plano",
+                    "3": "Informe o arquivo principal",
+                    "4": "Informe a versão do node para seu bot"
+                }
+            }
+        }
+    }
+}

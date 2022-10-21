@@ -4,6 +4,7 @@
     "clientID": "",
 
     "mode": "publico",
+    "landuage": "en",
     "rabbit_url": "a",
 
     "strapi_url": "",

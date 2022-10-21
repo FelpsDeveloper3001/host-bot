@@ -3,6 +3,7 @@ import { services } from "./services";
 
 const { Guilds, MessageContent, GuildMessages, GuildMembers, DirectMessages } =
   GatewayIntentBits;
+
 const client = new Client({
   intents: [
     Guilds,

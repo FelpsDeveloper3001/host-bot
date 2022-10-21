@@ -1,12 +1,12 @@
 import chalk from "chalk";
 import {
-  Guild,
   GuildMember,
   PermissionFlagsBits,
   PermissionResolvable,
-  PermissionsBitField,
   TextChannel,
 } from "discord.js";
+import { getFixedT } from "i18next";
+import { language as lan } from "./config/config.json";
 
 type colorType = "text" | "variable" | "error";
 
@@ -57,3 +57,8 @@ export const sendTimedMessage = (
     );
   return;
 };
+
+export function language(str: string) {
+  const t = getFixedT(lan);
+  return t(str);
+}
