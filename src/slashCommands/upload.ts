@@ -6,10 +6,9 @@ import {
   TextInputStyle,
   ModalActionRowComponentBuilder,
   SlashCommandBuilder,
-  GuildMember,
 } from "discord.js"
 import { v4 as uuidv4 } from "uuid"
-import { mode } from "../config/config.json"
+import { mode, usersRestrited } from "../config/config.json"
 import { language } from "../functions"
 import { prisma } from "../database/prisma"
 import { getImages, getPlans } from "../api/functions/system"
@@ -30,6 +29,16 @@ const command: SlashCommand = {
       .setCustomId(modalID)
       .setTitle(language(`commands:upload:mode:${mode}:title`))
     if (mode == "individual") {
+      if (
+        !usersRestrited.find(
+          (users: any) => users == interaction.member?.user.id
+        )
+      ) {
+        return interaction.reply({
+          ephemeral: true,
+          content: `${language(`commands:upload:mode:${mode}:permission`)}`,
+        })
+      }
       const plans = await getPlans()
       const client =
         new ActionRowBuilder<ModalActionRowComponentBuilder>().addComponents(

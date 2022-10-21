@@ -2,6 +2,7 @@
     "upload": {
         "mode": {
             "individual": {
+                "permission": "You are not allowed to use this command",
                 "title": "Host Bot - Application upload",
                 "inputs": {
                     "1": "Enter the client ID of this application",

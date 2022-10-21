@@ -53,10 +53,11 @@ Além disto é bom ter um editor em seu computador para editar o codigo se neces
 É obrigatorio possuir uma conexão com banco de dados ( Postgre ou Mysql ), [Strapi](https://strapi.io/) e [RabbitMQ](https://www.rabbitmq.com/)
 
 Você pode subir os container dos serviços obrigatorios no diretorio src/templates
-
+Todos os serviços do projeto foi usado no linux ubuntu 20.04
 Todas as configurações do bot está no diretorio src/config/config.json
+Você pode editar as linguagem do bot em src/locales
 
-### 🎲 Rodando o bot em servidor linux
+### 🎲 Rodando o bot em servidor linux ubuntu
 
 #### Rodando o bot via terminal:
 
