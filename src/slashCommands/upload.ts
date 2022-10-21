@@ -6,10 +6,11 @@ import {
   TextInputStyle,
   ModalActionRowComponentBuilder,
   SlashCommandBuilder,
+  GuildMember,
 } from "discord.js"
 import { v4 as uuidv4 } from "uuid"
 import { mode, usersRestrited } from "../config/config.json"
-import { language } from "../functions"
+import { getPlan, language } from "../functions"
 import { prisma } from "../database/prisma"
 import { getImages, getPlans } from "../api/functions/system"
 
@@ -18,6 +19,7 @@ const command: SlashCommand = {
     .setName("upload")
     .setDescription("Upload aplication to server"),
   execute: async (interaction) => {
+    const plan = await getPlan(interaction.member as GuildMember)
     if (!interaction.guild?.members.me?.permissions.has(["ManageChannels"]))
       return interaction.reply({
         ephemeral: true,

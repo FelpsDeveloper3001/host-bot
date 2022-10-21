@@ -21,6 +21,17 @@
                     "4": "Select node version"
                 }
             }
+        },
+        "modal": {
+            "title": "<:Discord_Pencil:1033070304781672478> | Host Bot - Updating application",
+            "color": "BLUE",
+            "fields": {
+                "1": "<:User_Badge:1033069309708222526> | Name / ID",
+                "2": "<:NewMemberBadge:1033070437619482675> | Memory",
+                "3": "<:cc445_Developer:1033069739477573774> | Node Version",
+                "4": "<:Gift:994317940918857748> | Plan"
+            },
+            "message": "<:newsletter:994319815483330690> | Send your application .zip file to start the upload"
         }
     }
 }

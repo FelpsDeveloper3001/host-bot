@@ -1,6 +1,13 @@
 import api from "../"
 
-interface Plans {}
+export interface Plans {
+  roleID: string
+  name: string
+  memory: number
+  cpu: number
+  maxBots: number
+  node: string
+}
 
 export async function getPlans(): Promise<Plans[]> {
   return new Promise((res) => {
