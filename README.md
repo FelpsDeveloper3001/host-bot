@@ -13,7 +13,7 @@ Host Bot é um bot de discord feito em typescript que gerencia os containers doc
 - Sistema de multiplos nodes
 - Sistema de logs
 - Sistema de vencimento da aplicação
-- Sistema de planos indidual
+- Sistema de planos
 - Pode-se usar em modo individual ou publico
 - Totalmente configuravel
 - Bot em Português / Inglês

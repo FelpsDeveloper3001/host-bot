@@ -1,0 +1,16 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./host.db"
+}
+
+model Interactions {
+  id       String  @id @default(uuid())
+  customId String  @unique
+  modals   String?
+  buttons  String?
+  menus    String?
+}
