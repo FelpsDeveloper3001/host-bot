@@ -80,6 +80,11 @@ export default class UploadInteraction {
               content: `${language(`messages:upload:botAlreadyRegistered`)}`,
             })
           }
+
+          await interaction.reply({
+            ephemeral: true,
+            content: `${language(`messages:upload:channelUploadCreate`)}`,
+          })
           const channel = await interaction.guild?.channels.create({
             name: `upload-${interaction.member?.user.username}`,
             type: ChannelType.GuildText,
@@ -105,10 +110,6 @@ export default class UploadInteraction {
             data: {
               channelId: channel?.id as string,
             },
-          })
-          interaction.reply({
-            ephemeral: true,
-            content: `${language(`messages:upload:channelUploadCreate`)}`,
           })
 
           const embed = new EmbedBuilder()
@@ -186,12 +187,4 @@ export default class UploadInteraction {
       console.log("catch", err)
     }
   }
-}
-
-async function wait(timer: number) {
-  return new Promise((res) => {
-    setTimeout(() => {
-      res(true)
-    }, timer)
-  })
 }
