@@ -165,6 +165,7 @@ export default class UploadInteraction {
                     online: false,
                     plan: plan.name,
                   })
+                  console.log("bot", bot)
                   if (bot) {
                     rabbit.send("host:node", plan.node, {
                       type: "upload",

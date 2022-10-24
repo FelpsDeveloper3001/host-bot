@@ -12,7 +12,7 @@ interface botCreateProps {
 }
 
 export interface Bot extends botCreateProps {
-  err: number
+  err?: number
 }
 
 export async function teste(): Promise<any> {
@@ -36,10 +36,9 @@ export async function getBot(id: string): Promise<Bot | undefined> {
   return undefined
 }
 
-export async function createBot(data: botCreateProps): Promise<Bot> {
+export async function createBot(data = { err: 0 } as Bot): Promise<Bot> {
   try {
     const bot = (await getBot(data.bot_id)) as any
-    bot.err = 1
     if (bot) return bot
     const response = await api.post(`${strapi_url}/bots`, {
       data,

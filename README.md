@@ -55,6 +55,7 @@ Além disto é bom ter um editor em seu computador para editar o codigo se neces
 Você pode subir os container dos serviços obrigatorios no diretorio src/templates
 Todos os serviços do projeto foi usado no linux ubuntu 20.04
 Todas as configurações do bot está no diretorio src/config/config.json
+
 Você pode editar as linguagem do bot em src/locales
 
 ### 🎲 Rodando o bot em servidor linux ubuntu
@@ -62,22 +63,11 @@ Você pode editar as linguagem do bot em src/locales
 #### Rodando o bot via terminal:
 
 ```bash
-# Clone este repositório
 $ git clone https://github.com/SnaffX/host-bot
-
-# Acesse a pasta do bot
 $ cd host-bot
-
-# Instale as dependências
-$ npm install
-
-# faça o build do bot
+$ npm install ou yarn install
 $ npm run build
-
-# enviar as ultimas atualizações do banco de dados
 $ npx prisma db push
-
-# Execute a aplicação em modo de produção
 $ npm run production
 ```
 
