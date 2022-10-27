@@ -44,7 +44,6 @@ const command: SlashCommand = {
       .setCustomId(modalID)
       .setTitle(language(`commands:upload:modal:title`));
 
-    const images = ["node:18"];
     const bot =
       new ActionRowBuilder<ModalActionRowComponentBuilder>().addComponents(
         new TextInputBuilder()

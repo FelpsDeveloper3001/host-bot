@@ -152,7 +152,8 @@ export default class UploadInteraction {
                 if (bot) {
                   rabbit.send("host:node", node.node, {
                     type: "upload",
-                    proxy: zip.proxyURL,
+                    uuid: bot.uuid,
+                    proxy: zip.url,
                     size: zip.size,
                     memory,
                     image: "node:16",
