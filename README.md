@@ -4,7 +4,7 @@ Host Bot é um bot de discord feito em typescript que gerencia os containers doc
 
 ## Características
 
-- [x] Hospeda bots de discord pelo seu servidor do discord
+- [] Hospeda bots de discord pelo seu servidor do discord
 - [x] É possivel Reiniciar / Parar / Iniciar a aplicação
 - [x] Obter backup da aplicação via DM
 - [x] Commit da aplicação
