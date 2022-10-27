@@ -5,6 +5,7 @@
         "memoryFormatError": "Enter only numbers in memory",
         "channelUploadCreate": "Your upload channel has been created",
         "invalidImage": "Incorrect node version does not exist",
-        "botAlreadyRegistered": "the bot informed is already registered in the system"
+        "botAlreadyRegistered": "the bot informed is already registered in the system",
+        "maxApplications": "maximo de applications"
     }
 }

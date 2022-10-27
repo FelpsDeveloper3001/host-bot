@@ -2,24 +2,19 @@ Arguments:
   C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js
 
 PATH: 
-  C:\Python310\Scripts\;C:\Python310\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\dotnet\;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\Program Files\PuTTY\;C:\Program Files (x86)\Yarn\bin\;C:\Program Files\Git\cmd;C:\Users\Diel\AppData\Roaming\npm;C:\Users\Diel\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Diel\AppData\Local\Yarn\bin
+  C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\nodejs\;C:\Program Files (x86)\Yarn\bin\;C:\Users\Diel\AppData\Roaming\npm;C:\Users\Diel\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Diel\AppData\Local\Yarn\bin
 
 Yarn version: 
   1.22.19
 
 Node version: 
-  16.17.1
+  18.12.0
 
 Platform: 
   win32 x64
 
 Trace: 
-  SyntaxError: C:\Users\Diel\Desktop\host\bot\package.json: Unexpected token } in JSON at position 330
-      at JSON.parse (<anonymous>)
-      at C:\Program Files (x86)\Yarn\lib\cli.js:1629:59
-      at Generator.next (<anonymous>)
-      at step (C:\Program Files (x86)\Yarn\lib\cli.js:310:30)
-      at C:\Program Files (x86)\Yarn\lib\cli.js:321:13
+  Error: ENOENT: no such file or directory, open 'C:\Users\Diel\AppData\Local\Yarn\Cache\v6\npm-amqplib-0.10.3-e186a2f74521eb55ec54db6d25ae82c29c1f911a-integrity\node_modules\amqplib\.yarn-metadata.json'
 
 npm manifest: 
   {
@@ -27,18 +22,30 @@ npm manifest:
     "version": "1.0.0",
     "description": "",
     "scripts": {
-      "start": "cls && node build/index.js"
+      "start": "cls && node build/index.js",
+      "dev": "ts-node-dev src/index.ts"
     },
     "keywords": [],
-    "author": "MericcaN41",
+    "author": "Morty",
     "license": "ISC",
     "dependencies": {
       "@discordjs/rest": "^1.1.0",
+      "@prisma/client": "^4.5.0",
       "@types/node": "^18.7.14",
+      "amqplib": "^0.10.3",
+      "axios": "^1.1.3",
       "chalk": "^4.1.2",
       "discord.js": "14.3.0",
+      "i18next": "^22.0.2",
+      "i18next-fs-backend": "^1.1.5",
+      "prisma": "^4.5.0",
+      "uuid": "^9.0.0"
     },
     "devDependencies": {
+      "@types/amqplib": "^0.8.2",
+      "@types/i18next-fs-backend": "^1.1.2",
+      "@types/uuid": "^8.3.4",
+      "ts-node-dev": "^2.0.0",
       "typescript": "^4.8.2"
     }
   }

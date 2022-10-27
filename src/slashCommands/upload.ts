@@ -1,4 +1,4 @@
-import { SlashCommand } from "../types"
+import { SlashCommand } from "../types";
 import {
   ActionRowBuilder,
   ModalBuilder,
@@ -7,127 +7,84 @@ import {
   ModalActionRowComponentBuilder,
   SlashCommandBuilder,
   GuildMember,
-} from "discord.js"
-import { v4 as uuidv4 } from "uuid"
-import { mode, usersRestrited } from "../config/config.json"
-import { getPlan, language } from "../functions"
-import { prisma } from "../database/prisma"
-import { getImages, getPlans } from "../api/functions/system"
+} from "discord.js";
+import { v4 as uuidv4 } from "uuid";
+import { usersRestrited } from "../config/config.json";
+import { createUser, getPlan, language } from "../functions";
+import { prisma } from "../database/prisma";
 
 const command: SlashCommand = {
   command: new SlashCommandBuilder()
     .setName("upload")
     .setDescription("Upload aplication to server"),
   execute: async (interaction) => {
-    const plan = await getPlan(interaction.member as GuildMember)
     if (!interaction.guild?.members.me?.permissions.has(["ManageChannels"]))
       return interaction.reply({
         ephemeral: true,
         content: `I don't have permission to manage channels`,
-      })
+      });
+    let user = (await prisma.users.findFirst({
+      where: { id: interaction.member?.user.id },
+      select: { applications: true },
+    })) as {
+      applications: [];
+    };
+    if (!user) {
+      user = await createUser(interaction.member as GuildMember);
+    }
 
-    const modalID = uuidv4()
+    const plan = await getPlan(interaction.member as GuildMember);
+    if (user?.applications.length >= plan.maxApplications)
+      return interaction.reply({
+        ephemeral: true,
+        content: `${language(`messages:upload:maxApplications`)}`,
+      });
+    const modalID = uuidv4();
     const modal = new ModalBuilder()
       .setCustomId(modalID)
-      .setTitle(language(`commands:upload:mode:${mode}:title`))
-    if (mode == "individual") {
-      if (
-        !usersRestrited.find(
-          (users: any) => users == interaction.member?.user.id
-        )
-      ) {
-        return interaction.reply({
-          ephemeral: true,
-          content: `${language(`commands:upload:mode:${mode}:permission`)}`,
-        })
-      }
-      const plans = await getPlans()
-      const client =
-        new ActionRowBuilder<ModalActionRowComponentBuilder>().addComponents(
-          new TextInputBuilder()
-            .setCustomId("clientId")
-            .setLabel(language(`commands:upload:mode:${mode}:inputs:1`))
-            .setPlaceholder("00000000000000000")
-            .setRequired(true)
-            .setStyle(TextInputStyle.Short)
-        )
-      const bot =
-        new ActionRowBuilder<ModalActionRowComponentBuilder>().addComponents(
-          new TextInputBuilder()
-            .setCustomId("botId")
-            .setLabel(language(`commands:upload:mode:${mode}:inputs:2`))
-            .setPlaceholder("00000000000000000")
-            .setRequired(true)
-            .setStyle(TextInputStyle.Short)
-        )
-      const plan =
-        new ActionRowBuilder<ModalActionRowComponentBuilder>().addComponents(
-          new TextInputBuilder()
-            .setCustomId("plan")
-            .setLabel(language(`commands:upload:mode:${mode}:inputs:3`))
-            .setPlaceholder(plans.map((plan: any) => plan.name).join(" | "))
-            .setRequired(true)
-            .setStyle(TextInputStyle.Short)
-        )
-      const venc =
-        new ActionRowBuilder<ModalActionRowComponentBuilder>().addComponents(
-          new TextInputBuilder()
-            .setCustomId("venc")
-            .setLabel(language(`commands:upload:mode:${mode}:inputs:4`))
-            .setPlaceholder("3d | 7d | 15d | 30d | 90d")
-            .setRequired(true)
-            .setStyle(TextInputStyle.Short)
-        )
-      const node =
-        new ActionRowBuilder<ModalActionRowComponentBuilder>().addComponents(
-          new TextInputBuilder()
-            .setCustomId("node")
-            .setLabel(language(`commands:upload:mode:${mode}:inputs:5`))
-            .setPlaceholder("Atlas | Pandora | Auto")
-            .setRequired(true)
-            .setStyle(TextInputStyle.Short)
-        )
-      modal.addComponents(client, bot, plan, venc, node)
-    } else {
-      const images = await getImages()
-      const bot =
-        new ActionRowBuilder<ModalActionRowComponentBuilder>().addComponents(
-          new TextInputBuilder()
-            .setCustomId("botId")
-            .setLabel(language(`commands:upload:mode:${mode}:inputs:1`))
-            .setPlaceholder("00000000000000000")
-            .setRequired(true)
-            .setStyle(TextInputStyle.Short)
-        )
-      const memory =
-        new ActionRowBuilder<ModalActionRowComponentBuilder>().addComponents(
-          new TextInputBuilder()
-            .setCustomId("memory")
-            .setLabel(language(`commands:upload:mode:${mode}:inputs:2`))
-            .setPlaceholder("512 | 1024 | 2048 | 4096")
-            .setRequired(true)
-            .setStyle(TextInputStyle.Short)
-        )
-      const file =
-        new ActionRowBuilder<ModalActionRowComponentBuilder>().addComponents(
-          new TextInputBuilder()
-            .setCustomId("file")
-            .setLabel(language(`commands:upload:mode:${mode}:inputs:3`))
-            .setPlaceholder("main.js | index.js | bot.js")
-            .setRequired(true)
-            .setStyle(TextInputStyle.Short)
-        )
-      const nodeVersion =
-        new ActionRowBuilder<ModalActionRowComponentBuilder>().addComponents(
-          new TextInputBuilder()
-            .setCustomId("nodeVersion")
-            .setLabel(language(`commands:upload:mode:${mode}:inputs:4`))
-            .setPlaceholder(images.map((plan: any) => plan).join(" | "))
-            .setRequired(true)
-            .setStyle(TextInputStyle.Short)
-        )
-      modal.addComponents(bot, memory, file, nodeVersion)
-    }
+      .setTitle(language(`commands:upload:modal:title`));
+
+    const images = ["node:18"];
+    const bot =
+      new ActionRowBuilder<ModalActionRowComponentBuilder>().addComponents(
+        new TextInputBuilder()
+          .setCustomId("botId")
+          .setLabel(language(`commands:upload:modal:inputs:1`))
+          .setPlaceholder("00000000000000000")
+          .setRequired(true)
+          .setStyle(TextInputStyle.Short)
+      );
+    const memory =
+      new ActionRowBuilder<ModalActionRowComponentBuilder>().addComponents(
+        new TextInputBuilder()
+          .setCustomId("memory")
+          .setLabel(language(`commands:upload:modal:inputs:2`))
+          .setPlaceholder("512 | 1024 | 2048 | 4096")
+          .setRequired(true)
+          .setStyle(TextInputStyle.Short)
+      );
+    const file =
+      new ActionRowBuilder<ModalActionRowComponentBuilder>().addComponents(
+        new TextInputBuilder()
+          .setCustomId("file")
+          .setLabel(language(`commands:upload:modal:inputs:3`))
+          .setPlaceholder("main.js | index.js | bot.js")
+          .setRequired(true)
+          .setStyle(TextInputStyle.Short)
+      );
+    /*
+    const nodeVersion =
+      new ActionRowBuilder<ModalActionRowComponentBuilder>().addComponents(
+        new TextInputBuilder()
+          .setCustomId("nodeVersion")
+          .setLabel(language(`commands:upload:modal:inputs:4`))
+          .setPlaceholder(images.map((plan: any) => plan).join(" | "))
+          .setRequired(true)
+          .setStyle(TextInputStyle.Short)
+      )
+      */
+    modal.addComponents(bot, memory, file);
+
     await prisma.interactions.create({
       data: {
         customId: modalID,
@@ -136,10 +93,10 @@ const command: SlashCommand = {
           type: "upload",
         }),
       },
-    })
-    await interaction.showModal(modal)
+    });
+    await interaction.showModal(modal);
   },
   cooldown: 10,
-}
+};
 
-export default command
+export default command;

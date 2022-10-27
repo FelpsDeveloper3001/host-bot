@@ -3,8 +3,8 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = "file:./host.db"
+  provider = "postgresql"
+  url      = "postgresql://postgres:postgres123@129.146.241.158:49154/postgres"
 }
 
 model Interactions {
@@ -18,4 +18,43 @@ model Interactions {
   updatedAt DateTime @updatedAt
 
   @@map("interactions")
+}
+
+model Applications {
+  uuid String @id @default(uuid())
+
+  id     String  @unique
+  tag    String?
+  avatar String?
+  lang   String? @default("javascript")
+  node   String?
+  ram    Int?
+  type   String?
+
+  user   Users  @relation(fields: [userId], references: [uuid])
+  userId String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("applications")
+}
+
+model Users {
+  uuid String @id @default(uuid())
+
+  id    String?
+  tag   String?
+  email String? @unique
+  plan  Json[]
+
+  blockList Boolean @default(false)
+  thread    String?
+
+  applications Applications[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("users")
 }

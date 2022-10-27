@@ -4,17 +4,16 @@ Host Bot é um bot de discord feito em typescript que gerencia os containers doc
 
 ## Características
 
-- Hospeda bots de discord pelo seu servidor do discord
-- É possivel Reiniciar / Parar / Iniciar a aplicação
-- Obter backup da aplicação via DM
-- Commit da aplicação
-- Ver informações CPU | Memoria | Disco | Rede
-- Reiniciar aplicação automaticamente apos queda
-- Sistema de multiplos nodes
-- Sistema de logs
-- Sistema de vencimento da aplicação
-- Sistema de planos
-- Pode-se usar em modo individual ou publico
+- [x] Hospeda bots de discord pelo seu servidor do discord
+- [x] É possivel Reiniciar / Parar / Iniciar a aplicação
+- [x] Obter backup da aplicação via DM
+- [x] Commit da aplicação
+- [x] Ver informações CPU | Memoria | Disco | Rede
+- [x] Reiniciar aplicação automaticamente apos queda
+- [x] Sistema de multiplos nodes
+- [x] Sistema de logs
+- [x] Sistema de vencimento da aplicação
+- [x] Sistema de planos
 - Totalmente configuravel
 - Bot em Português / Inglês
 
@@ -23,10 +22,6 @@ Host Bot é um bot de discord feito em typescript que gerencia os containers doc
 #### Informações da aplicação
 
 <img width="400" alt="image" src="https://media.discordapp.net/attachments/996221556499955732/998263736311750766/2.PNG">
-
-#### Sistema em modo individual
-
-<img width="400" alt="image" src="https://github.com/SnaffX/host-bot/blob/master/screenshots/1.png">
 
 #### Sistema em modo publico
 
@@ -42,7 +37,6 @@ As seguintes ferramentas foram usadas por todo o ecossistema do bot:
 - [RabbitMQ](https://www.rabbitmq.com/)
 - [Discord.js](https://discord.js.org)
 - [Postgree](https://www.postgresql.org)
-- [Strapi.io](https://strapi.io/)
 
 ### Pré-requisitos
 
@@ -50,7 +44,7 @@ Antes de começar, você vai precisar ter instalado em sua máquina as seguintes
 [Docker](https://www.docker.com), [Docker-Compose](https://docs.docker.com/compose/), [Node.js](https://nodejs.org/en/).
 Além disto é bom ter um editor em seu computador para editar o codigo se necessario [VSCode](https://code.visualstudio.com/)
 
-É obrigatorio possuir uma conexão com banco de dados ( Postgre ou Mysql ), [Strapi](https://strapi.io/) e [RabbitMQ](https://www.rabbitmq.com/)
+É obrigatorio possuir uma conexão com banco de dados ( Postgre ou Mysql ) e [RabbitMQ](https://www.rabbitmq.com/)
 
 Você pode subir os container dos serviços obrigatorios no diretorio src/templates
 Todos os serviços do projeto foi usado no linux ubuntu 20.04

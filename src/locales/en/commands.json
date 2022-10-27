@@ -1,28 +1,15 @@
 {
     "upload": {
-        "mode": {
-            "individual": {
-                "permission": "You are not allowed to use this command",
-                "title": "Host Bot - Application upload",
-                "inputs": {
-                    "1": "Enter the client ID of this application",
-                    "2": "Enter the bot ID",
-                    "3": "Select the plan for this application",
-                    "4": "Inform application expiration",
-                    "5": "Select the node for this application"
-                }
-            },
-            "public": {
-                "title": "Host Bot - bot upload",
-                "inputs": {
-                    "1": "Enter your bot ID",
-                    "2": "Inform the memory available in your plan",
-                    "3": "Enter your main file",
-                    "4": "Select node version"
-                }
+        "modal": {
+            "title": "Host Bot - bot upload",
+            "inputs": {
+                "1": "Enter your bot ID",
+                "2": "Inform the memory available in your plan",
+                "3": "Enter your main file",
+                "4": "Select node version"
             }
         },
-        "modal": {
+        "message": {
             "title": "<:Discord_Pencil:1033070304781672478> | Host Bot - Updating application",
             "color": "BLUE",
             "fields": {
