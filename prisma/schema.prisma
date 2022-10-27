@@ -4,7 +4,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = "postgresql://postgres:postgres123@129.146.241.158:49154/postgres"
+  url      = "sua url"
 }
 
 model Interactions {
