@@ -1,6 +1,9 @@
-# Bot de sistema de hospedagem via discord
+# Bot de sistema de hospedagem via discord ( descontnuado )
 
 Host Bot é um bot de discord feito em typescript que gerencia os containers docker pelo seu servidor do discord, é possivel hospedar aplicações node.js com apenas 1 comando.
+
+Esse projeto se encontra pausado, quem sabe num futuro proximo eu não continuo esse projeto :]
+Se quiserem dicas de como criar hospedagem de bots via discord, adiciona la no discord
 
 ## Características
 
